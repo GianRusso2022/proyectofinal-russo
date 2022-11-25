@@ -1,4 +1,3 @@
-
 export const Footer = () => {
     return (
         <footer className="footer-07 bg-dark container-fluid">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./Button";
+import Button from "../components/Button";
 
 const Counter = ({ stock, onAdd }) => {
   const [contador, setContador] = useState(0);
@@ -17,7 +17,7 @@ const Counter = ({ stock, onAdd }) => {
   return (
     <div className="d-flex justify-content-between">
       <Button onClick={handleSubstract}> Restar </Button>
-      <span className="text-center" style={{ minWidth: 25 }}>{contador}</span>
+      <span className="text-center mt-3" style={{ minWidth: 25 }}>{contador}</span>
       <Button onClick={handleAdd}> Sumar </Button>
       <Button
         onClick={() => {

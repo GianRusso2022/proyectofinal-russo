@@ -1,10 +1,8 @@
-
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/cartContext";
 
 export const NavBar = () => {
     const { cart, getCartQty } = useCartContext();
-    console.log(cart);
     return <nav className="navbar navbar-expand-lg bg-dark container">
 
         <div className="container">
