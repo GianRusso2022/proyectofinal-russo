@@ -12,7 +12,6 @@ export const CartProvider = ({ children }) => {
         setCart(newCart);
     };
 
-
     const addProduct = (item, qty) => {
         const element = cart.find((product) => product.id === item.id);
         if (!element) return setCart([...cart, { ...item, qty }]);
@@ -26,10 +25,10 @@ export const CartProvider = ({ children }) => {
     }
 
 
-    const getTotal = () => cart.reduce((acc, product) => acc + product.precio * product.qty ,0)
+    const getTotal = () => cart.reduce((acc, product) => acc + product.precio * product.qty, 0)
 
-    const getCartQty = () => cart.reduce((acc,product) => acc + product.qty , 0);
-  
+    const getCartQty = () => cart.reduce((acc, product) => acc + product.qty, 0);
+
     const emptyCart = () => setCart([])
 
 
