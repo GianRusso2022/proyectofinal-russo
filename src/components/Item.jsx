@@ -6,7 +6,7 @@ const Item = ({ precio, color, detalle, id, imagen, categoria, nombre, stock }) 
     const { addProduct } = useCartContext();
     return <div className="m-2">
         <div className="card" onClick={() => navigate(`/product/${id}`)}>
-            <img src={imagen} alt="imagen" className="card-img-top" />
+            <img src={imagen} alt="imagen-producto" className="card-img-top" />
             <div className="card-body d-flex justify-content-between">
                 <span>{nombre}</span>
                 <span>${precio}</span>

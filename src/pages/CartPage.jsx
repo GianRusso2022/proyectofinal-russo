@@ -1,55 +1,59 @@
 import { useCartContext } from "../context/cartContext";
-import { useNavigate } from "react-router-dom";
 import { addOrder } from "../api/orders";
 import { updateManyProducts } from "../api/products";
 import Button from "../components/Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 
 const Cart = () => {
-  const navigate = useNavigate()
+  
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   
-  
-
   const { getTotal, cart, emptyCart } = useCartContext();
 
   const createOrder = async () => {
-
-
-    const items = cart.map(({ id, nombre, qty, precio }) => ({
-      id,
-      title: nombre,
-      qty,
-      price: precio,
-    }));
-
-    const order = {
-      buyer: { name, phone, email },
-      items,
-      total: getTotal(),
-    };
-
-    if (cart.length === 0) {
+    if (name, phone, email == ""){
       Swal.fire({
         icon: 'error',
-        title: 'No hay productos en el carrito',
-        text: 'Para poder realizar un pedido debe agregar productos al carrito',
+        title: 'Formulario incompleto',
+        text: 'Para realizar el pedido debe completar el formulario',
       })
     } else {
-      const id = await addOrder(order);
-      Swal.fire({
-        icon: 'succes',
-        title: 'Pedido realizado',
-        text: `El ID de su compra es ${id}`,
-      })
-      await updateManyProducts(items)
-      emptyCart();
-    }
 
+      const items = cart.map(({ id, nombre, qty, precio }) => ({
+        id,
+        title: nombre,
+        qty,
+        price: precio,
+      }));
+  
+      const order = {
+        buyer: { name, phone, email },
+        items,
+        total: getTotal(),
+      };
+  
+      if (cart.length === 0) {
+        Swal.fire({
+          icon: 'error',
+          title: 'No hay productos en el carrito',
+          text: 'Para poder realizar un pedido debe agregar productos al carrito',
+        })
+      } else {
+        const id = await addOrder(order);
+        Swal.fire({
+          icon: 'succes',
+          title: 'Pedido realizado',
+          text: `El ID de su compra es ${id}`,
+        })
+        await updateManyProducts(items)
+        emptyCart();
+      }
+    }
+    
   };
   return (
     <div className="container w-75 mb-5 mt-5 fix">
@@ -86,6 +90,7 @@ const Cart = () => {
       </span>
       <div style={{ display: "grid", gap: 10 }}>
         <span>Nombre</span>
+
         <input
           style={{ border: "1px solid black", height: 40 }}
           onChange={(e) => setName(e.target.value)}
@@ -94,6 +99,7 @@ const Cart = () => {
           placeholder="Introduzca su nombre"
         />
         <span>Telefono</span>
+
         <input
           style={{ border: "1px solid black", height: 40 }}
           onChange={(e) => setPhone(e.target.value)}
@@ -101,6 +107,7 @@ const Cart = () => {
           placeholder="Introduzca su telefono de contacto"
         />
         <span>Email</span>
+
         <input
           style={{ border: "1px solid black", marginBottom: 15, height: 40 }}
           onChange={(e) => setEmail(e.target.value)}

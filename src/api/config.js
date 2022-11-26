@@ -2,12 +2,12 @@ import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCpqc55FySpr4KJcZ3JVFOwhSwVuHpBaOc",
-    authDomain: "lospaseos-tienda.firebaseapp.com",
-    projectId: "lospaseos-tienda",
-    storageBucket: "lospaseos-tienda.appspot.com",
-    messagingSenderId: "375435437508",
-    appId: "1:375435437508:web:99310d61ad593bc8003091"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

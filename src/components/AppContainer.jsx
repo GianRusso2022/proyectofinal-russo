@@ -15,7 +15,7 @@ const AppContainer = () => {
     }, [categoryId])
 
     return (
-        <div className="products container d-flex flex-wrap justify-content-center">
+        <div className="container d-flex flex-wrap justify-content-center">
             {productos.map((producto) => {
                 return (
                     <Item
