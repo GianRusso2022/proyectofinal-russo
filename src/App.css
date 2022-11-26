@@ -3,17 +3,18 @@ body{
 }
 
 .card{
-
   transition: all 0.2s ease;
   cursor: pointer;
-
 }
 .card:hover{
   box-shadow: 5px 6px 6px 2px #e9ecef;
   transform: scale(0.9);
 }
 
-
 a{
   text-decoration: none;
+}
+
+.fix{
+  min-height: 90vh;
 }
